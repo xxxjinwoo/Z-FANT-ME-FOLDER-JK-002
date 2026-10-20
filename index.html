@@ -1,1 +1,430 @@
-<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="theme-color" content="#020403"> <title>JOKER FOLDER 2 | MATRIX</title> <style> :root { --bg: #020403; --panel: #08110b; --green: #00ff66; --text: #dcffe5; --muted: #8aa895; --border: rgba(0,255,102,.25); } * { box-sizing: border-box; } body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); font-family: Arial, sans-serif; } #matrix { position: fixed; inset: 0; width: 100%; height: 100%; opacity: .20; pointer-events: none; z-index: 0; } .loader { position: fixed; inset: 0; z-index: 9999; background: #020403; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 17px; animation: autoHide 4s forwards; } .loader-logo { font-size: clamp(25px, 7vw, 38px); font-weight: 900; color: var(--green); letter-spacing: 3px; text-align: center; text-shadow: 0 0 20px var(--green); } .loader-sub { color: var(--muted); font-size: 11px; letter-spacing: 4px; } .loader-bar { width: 210px; height: 3px; background: #14231a; overflow: hidden; } .loader-progress { height: 100%; background: var(--green); box-shadow: 0 0 12px var(--green); animation: progress 2.5s forwards; } @keyframes progress { to { width: 100%; } } @keyframes autoHide { 0%, 70% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } } .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; } .page { position: relative; z-index: 1; width: 100%; max-width: 540px; margin: auto; padding: 25px 16px 40px; } .status { display: flex; align-items: center; justify-content: center; gap: 9px; color: var(--green); font-size: 10px; letter-spacing: 2px; margin-bottom: 25px; } .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); } header { text-align: center; margin-bottom: 30px; } .logo { width: 70px; height: 70px; margin: 8px auto 23px; border: 1px solid var(--green); display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 0 25px rgba(0,255,102,.12); } .logo span { color: var(--green); font-size: 25px; font-weight: 900; transform: rotate(-45deg); } h1 { font-size: clamp(23px, 6vw, 34px); letter-spacing: 2px; color: var(--green); margin: 0 0 12px; overflow-wrap: anywhere; } .subtitle { color: var(--muted); font-size: 11px; line-height: 1.9; letter-spacing: 1.5px; } .panel { background: rgba(8,17,11,.96); border: 1px solid var(--border); border-radius: 12px; padding: 22px 18px; box-shadow: 0 0 30px rgba(0,255,102,.04); } .panel-title { color: var(--green); font-size: 13px; letter-spacing: 2px; padding-bottom: 15px; border-bottom: 1px solid var(--border); margin: 0 0 22px; } .field { margin-bottom: 18px; } label { display: block; color: #b3d9be; font-size: 11px; letter-spacing: 1px; margin-bottom: 8px; } input, select { width: 100%; min-height: 47px; padding: 12px; border: 1px solid #23452e; border-radius: 6px; background: #020704; color: white; font-size: 14px; outline: none; } input:focus, select:focus { border-color: var(--green); box-shadow: 0 0 10px rgba(0,255,102,.10); } select option { background: #07110b; } .consent { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 12px; line-height: 1.7; margin: 20px 0; } .consent input { width: 17px; min-height: 17px; margin-top: 2px; accent-color: var(--green); flex-shrink: 0; } .submit-btn { width: 100%; min-height: 49px; padding: 12px; border: 1px solid var(--green); border-radius: 6px; background: var(--green); color: #001706; font-size: 12px; font-weight: 900; letter-spacing: 1.5px; cursor: pointer; } .submit-btn:disabled { opacity: .55; cursor: wait; } .message { display: none; padding: 13px; margin-top: 17px; border-radius: 6px; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; } .message.success { display: block; color: var(--green); border: 1px solid var(--green); background: rgba(0,255,102,.06); } .message.error { display: block; color: #ff8585; border: 1px solid #ff4b4b; background: rgba(255,0,0,.05); } .note { color: #75917e; text-align: center; font-size: 10px; line-height: 1.9; margin-top: 20px; } footer { text-align: center; color: #587462; font-size: 10px; letter-spacing: 1px; margin-top: 28px; } @media(max-width:360px) { .panel { padding: 17px 13px; } h1 { letter-spacing: 1px; } } </style> </head> <body> <canvas id="matrix"></canvas> <!-- ECRAN DE DÉMARRAGE --> <div class="loader" id="loader"> <div class="loader-logo">JOKER FOLDER</div> <div class="loader-sub">MATRIX SYSTEM V2</div> <div class="loader-bar"> <div class="loader-progress"></div> </div> <div style="color:#00ff66;font-size:12px;letter-spacing:2px"> INITIALISATION... </div> </div> <script> (function() { const loader = document.getElementById("loader"); if (loader) { setTimeout(function() { loader.classList.add("hidden"); setTimeout(function() { if (loader.parentNode) loader.remove(); }, 900); }, 2800); } })(); </script> <main class="page"> <div class="status"> <span class="dot"></span> MATRIX SYSTEM — ONLINE </div> <header> <div class="logo"><span>JF</span></div> <h1>JOKER FOLDER 2</h1> <div class="subtitle"> ACCÈS AU SYSTÈME MATRIX<br> FORMULAIRE D'INSCRIPTION </div> </header> <section class="panel"> <h2 class="panel-title">▸ CRÉER VOTRE INSCRIPTION</h2> <form id="registrationForm"> <div class="field"> <label for="nom">NOM</label> <input id="nom" name="nom" type="text" placeholder="Votre nom" autocomplete="family-name" required> </div> <div class="field"> <label for="prenom">PRÉNOM</label> <input id="prenom" name="prenom" type="text" placeholder="Votre prénom" autocomplete="given-name" required> </div> <div class="field"> <label for="telephone">NUMÉRO DE TÉLÉPHONE</label> <input id="telephone" name="telephone" type="tel" placeholder="+509..." autocomplete="tel" required> </div> <div class="field"> <label for="sexe">SEXE</label> <select id="sexe" name="sexe" required> <option value="">Sélectionnez une option</option> <option value="Masculin">Masculin</option> <option value="Féminin">Féminin</option> <option value="Autre">Autre</option> <option value="Non précisé">Je préfère ne pas préciser</option> </select> </div> <label class="consent"> <input id="consentement" type="checkbox" required> <span> J'accepte que mes informations soient enregistrées pour traiter mon inscription à JOKER FOLDER 2. </span> </label> <button type="submit" id="submitBtn" class="submit-btn"> ENVOYER MON INSCRIPTION </button> <div id="message" class="message" role="status" aria-live="polite"></div> </form> </section> <div class="note"> MATRIX SYSTEM : ACTIF<br> Vérifiez vos informations avant l'envoi. </div> <footer> © 2026 JOKER FOLDER 2 | MATRIX </footer> </main> <!-- ANIMATION MATRIX --> <script> (function() { const canvas = document.getElementById("matrix"); const ctx = canvas.getContext("2d"); const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオカキクケコ"; const size = 14; let drops = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; drops = Array(Math.ceil(canvas.width / size)).fill(1); } function draw() { ctx.fillStyle = "rgba(2,4,3,0.09)"; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "#00ff66"; ctx.font = size + "px monospace"; for (let i = 0; i < drops.length; i++) { const char = chars[Math.floor(Math.random() * chars.length)]; ctx.fillText(char, i * size, drops[i] * size); if ( drops[i] * size > canvas.height && Math.random() > 0.975 ) { drops[i] = 0; } drops[i]++; } requestAnimationFrame(draw); } window.addEventListener("resize", resize); resize(); draw(); })(); </script> <!-- CONNEXION GOOGLE APPS SCRIPT --> <script> (function() { const form = document.getElementById("registrationForm"); const button = document.getElementById("submitBtn"); const message = document.getElementById("message"); const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyjYxrGsKqOcPq9mV0Oo7w3qB1HkH-owNb03pOv9h2qibko0QPVBC5ti3eX7-ULYSte6Q/exec"; function showMessage(text, type) { message.textContent = text; message.className = "message " + type; } form.addEventListener("submit", async function(event) { event.preventDefault(); if (!form.reportValidity()) return; const data = { nom: document.getElementById("nom").value.trim(), prenom: document.getElementById("prenom").value.trim(), telephone: document.getElementById("telephone").value.trim(), sexe: document.getElementById("sexe").value, consentement: document.getElementById("consentement").checked ? "Accepté" : "" }; button.disabled = true; button.textContent = "ENVOI EN COURS..."; try { await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) }); showMessage( "Demande transmise. Vérifiez Google Sheets, onglet Inscriptions, pour confirmer que vos données ont été enregistrées. Ne soumettez pas une seconde fois avant cette vérification.", "success" ); } catch (error) { console.error("Erreur d'envoi :", error); showMessage( "Échec de la connexion. Vérifiez Internet et réessayez.", "error" ); } finally { button.disabled = false; button.textContent = "ENVOYER MON INSCRIPTION"; } }); })(); </script> </body> </html> 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000201">
+<title>JOKER FOLDER 2 | MATRIX</title>
+
+<style>
+:root {
+  --bg:#000201;
+  --panel:#040906;
+  --green:#00ff66;
+  --text:#d5ffe1;
+  --muted:#668472;
+  --border:rgba(0,255,102,.2);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;background:var(--bg);
+  color:var(--text);font-family:Arial,sans-serif
+}
+#matrix{
+  position:fixed;inset:0;width:100%;height:100%;
+  opacity:.12;pointer-events:none;z-index:0
+}
+.loader{
+  position:fixed;inset:0;z-index:9999;background:#000201;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:17px;
+  animation:autoHide 3.5s forwards
+}
+.loader-logo{
+  font-size:clamp(25px,7vw,38px);font-weight:900;
+  color:var(--green);letter-spacing:3px;text-align:center;
+  text-shadow:0 0 15px rgba(0,255,102,.4)
+}
+.loader-sub{color:var(--muted);font-size:10px;letter-spacing:4px}
+.loader-bar{width:210px;height:3px;background:#07130b;overflow:hidden}
+.loader-progress{
+  height:100%;width:0;background:var(--green);
+  animation:progress 2.5s forwards
+}
+@keyframes progress{to{width:100%}}
+@keyframes autoHide{
+  0%,75%{opacity:1;visibility:visible}
+  100%{opacity:0;visibility:hidden;pointer-events:none}
+}
+.loader.hidden{display:none}
+.page{
+  position:relative;z-index:1;width:100%;max-width:540px;
+  margin:auto;padding:25px 16px 40px
+}
+.status{
+  display:flex;align-items:center;justify-content:center;
+  gap:9px;color:var(--green);font-size:10px;
+  letter-spacing:2px;margin-bottom:25px
+}
+.dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 8px var(--green)
+}
+header{text-align:center;margin-bottom:30px}
+.logo{
+  width:70px;height:70px;margin:8px auto 23px;
+  border:1px solid var(--green);display:flex;
+  align-items:center;justify-content:center;transform:rotate(45deg);
+  box-shadow:0 0 18px rgba(0,255,102,.07)
+}
+.logo span{
+  color:var(--green);font-size:25px;font-weight:900;
+  transform:rotate(-45deg)
+}
+h1{
+  font-size:clamp(23px,6vw,34px);letter-spacing:2px;
+  color:var(--green);margin:0 0 12px;overflow-wrap:anywhere
+}
+.subtitle{
+  color:var(--muted);font-size:11px;line-height:1.9;
+  letter-spacing:1.5px
+}
+.panel{
+  background:rgba(3,8,5,.97);border:1px solid var(--border);
+  border-radius:10px;padding:22px 18px;
+  box-shadow:0 0 25px rgba(0,255,102,.025)
+}
+.panel-title{
+  color:var(--green);font-size:13px;letter-spacing:2px;
+  padding-bottom:15px;border-bottom:1px solid var(--border);
+  margin:0 0 22px
+}
+.field{margin-bottom:18px}
+label{
+  display:block;color:#a0c8ae;font-size:11px;
+  letter-spacing:1px;margin-bottom:8px
+}
+input,select{
+  width:100%;min-height:47px;padding:12px;
+  border:1px solid #193323;border-radius:5px;
+  background:#010402;color:white;font-size:14px;outline:none
+}
+input:focus,select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 8px rgba(0,255,102,.08)
+}
+select option{background:#040906}
+.consent{
+  display:flex;align-items:flex-start;gap:10px;
+  color:var(--muted);font-size:12px;line-height:1.7;
+  margin:20px 0
+}
+.consent input{
+  width:17px;min-height:17px;margin-top:2px;
+  accent-color:var(--green);flex-shrink:0
+}
+.submit-btn{
+  width:100%;min-height:49px;padding:12px;
+  border:1px solid var(--green);border-radius:5px;
+  background:var(--green);color:#001606;font-size:12px;
+  font-weight:900;letter-spacing:1.5px;cursor:pointer
+}
+.submit-btn:disabled{opacity:.5;cursor:wait}
+.note{
+  color:#526b5a;text-align:center;font-size:10px;
+  line-height:1.9;margin-top:20px
+}
+footer{
+  text-align:center;color:#354b3c;font-size:10px;
+  letter-spacing:1px;margin-top:28px
+}
+
+/* FENÈT MESAJ */
+.modal{
+  position:fixed;inset:0;z-index:10000;
+  display:none;align-items:center;justify-content:center;
+  padding:22px;background:rgba(0,0,0,.88)
+}
+.modal.show{display:flex}
+.modal-box{
+  width:100%;max-width:360px;padding:25px 20px;
+  text-align:center;background:#030805;
+  border:1px solid var(--green);border-radius:8px;
+  box-shadow:0 0 25px rgba(0,255,102,.08)
+}
+.modal-box.error{border-color:#ff4545}
+.modal-title{
+  color:var(--green);font-size:16px;font-weight:bold;
+  letter-spacing:1px;margin-bottom:15px
+}
+.modal-box.error .modal-title{color:#ff6666}
+.modal-text{
+  color:#c1d8c8;font-size:13px;line-height:1.8;
+  overflow-wrap:anywhere
+}
+.modal-button{
+  width:100%;margin-top:20px;padding:12px;
+  border:1px solid var(--green);border-radius:4px;
+  background:transparent;color:var(--green);
+  font-weight:bold;cursor:pointer
+}
+.modal-box.error .modal-button{
+  border-color:#ff4545;color:#ff7777
+}
+@media(max-width:360px){
+  .panel{padding:17px 13px}
+  h1{letter-spacing:1px}
+}
+</style>
+</head>
+
+<body>
+<canvas id="matrix"></canvas>
+
+<div class="loader" id="loader">
+  <div class="loader-logo">JOKER FOLDER</div>
+  <div class="loader-sub">MATRIX SYSTEM V2</div>
+  <div class="loader-bar"><div class="loader-progress"></div></div>
+  <div style="color:#00ff66;font-size:11px;letter-spacing:2px">
+    INITIALISATION...
+  </div>
+</div>
+
+<main class="page">
+  <div class="status">
+    <span class="dot"></span>
+    MATRIX SYSTEM — ONLINE
+  </div>
+
+  <header>
+    <div class="logo"><span>JF</span></div>
+    <h1>JOKER FOLDER 2</h1>
+    <div class="subtitle">
+      ACCÈS AU SYSTÈME MATRIX<br>
+      FORMULAIRE D'INSCRIPTION
+    </div>
+  </header>
+
+  <section class="panel">
+    <h2 class="panel-title">▸ CRÉER VOTRE INSCRIPTION</h2>
+
+    <form id="registrationForm">
+      <div class="field">
+        <label for="nom">NOM</label>
+        <input id="nom" name="nom" type="text"
+          placeholder="Votre nom" autocomplete="family-name" required>
+      </div>
+
+      <div class="field">
+        <label for="prenom">PRÉNOM</label>
+        <input id="prenom" name="prenom" type="text"
+          placeholder="Votre prénom" autocomplete="given-name" required>
+      </div>
+
+      <div class="field">
+        <label for="telephone">NUMÉRO DE TÉLÉPHONE</label>
+        <input id="telephone" name="telephone" type="tel"
+          placeholder="+509..." autocomplete="tel" required>
+      </div>
+
+      <div class="field">
+        <label for="sexe">SEXE</label>
+        <select id="sexe" name="sexe" required>
+          <option value="">Sélectionnez une option</option>
+          <option value="Masculin">Masculin</option>
+          <option value="Féminin">Féminin</option>
+          <option value="Autre">Autre</option>
+          <option value="Non précisé">Je préfère ne pas préciser</option>
+        </select>
+      </div>
+
+      <label class="consent">
+        <input id="consentement" type="checkbox" required>
+        <span>
+          J'accepte que mes informations soient enregistrées
+          pour traiter mon inscription à JOKER FOLDER 2.
+        </span>
+      </label>
+
+      <button type="submit" id="submitBtn" class="submit-btn">
+        ENVOYER MON INSCRIPTION
+      </button>
+    </form>
+  </section>
+
+  <div class="note">
+    MATRIX SYSTEM : ACTIF<br>
+    Vérifiez vos informations avant l'envoi.
+  </div>
+
+  <footer>© 2026 JOKER FOLDER 2 | MATRIX</footer>
+</main>
+
+<div class="modal" id="messageModal" role="dialog"
+  aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-title" id="modalTitle">INFORMATION</div>
+    <div class="modal-text" id="modalText"></div>
+    <button class="modal-button" id="modalClose" type="button">
+      FERMER
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const loader = document.getElementById("loader");
+  setTimeout(function(){
+    if(loader) loader.classList.add("hidden");
+  }, 2800);
+})();
+
+/* ANIMATION MATRIX PLUS SOMBRE */
+(function(){
+  const canvas = document.getElementById("matrix");
+  const ctx = canvas.getContext("2d");
+  const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const size = 14;
+  let drops = [];
+  let frame = 0;
+
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drops = Array(Math.ceil(canvas.width / size)).fill(1);
+  }
+
+  function draw(){
+    frame++;
+    if(frame % 2 === 0){
+      ctx.fillStyle = "rgba(0,2,1,0.18)";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = "#00a83f";
+      ctx.font = size + "px monospace";
+
+      for(let i=0;i<drops.length;i++){
+        if(Math.random() > 0.45){
+          ctx.fillText(
+            chars[Math.floor(Math.random()*chars.length)],
+            i*size,drops[i]*size
+          );
+        }
+
+        if(drops[i]*size > canvas.height && Math.random() > 0.985){
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("resize",resize);
+  resize();
+  draw();
+})();
+
+/* FENÈT MESAJ */
+(function(){
+  const modal = document.getElementById("messageModal");
+  const box = document.getElementById("modalBox");
+  const title = document.getElementById("modalTitle");
+  const text = document.getElementById("modalText");
+  const close = document.getElementById("modalClose");
+
+  window.showRegistrationMessage = function(message, type){
+    box.className = "modal-box" + (type === "error" ? " error" : "");
+
+    if(type === "success"){
+      title.textContent = "INSCRIPTION RÉUSSIE";
+    } else if(type === "duplicate"){
+      title.textContent = "INSCRIPTION DÉJÀ EFFECTUÉE";
+    } else {
+      title.textContent = "INFORMATION";
+    }
+
+    text.textContent = message;
+    modal.classList.add("show");
+  };
+
+  close.addEventListener("click",function(){
+    modal.classList.remove("show");
+  });
+
+  modal.addEventListener("click",function(event){
+    if(event.target === modal) modal.classList.remove("show");
+  });
+})();
+
+/*
+IMPORTANT :
+Le serveur Apps Script doit renvoyer une réponse lisible
+pour distinguer un doublon d'une inscription réussie.
+*/
+(function(){
+  const form = document.getElementById("registrationForm");
+  const button = document.getElementById("submitBtn");
+
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbyjYxrGsKqOcPq9mV0Oo7w3qB1HkH-owNb03pOv9h2qibko0QPVBC5ti3eX7-ULYSte6Q/exec";
+
+  form.addEventListener("submit",async function(event){
+    event.preventDefault();
+
+    if(!form.reportValidity()) return;
+
+    const data = {
+      nom:document.getElementById("nom").value.trim(),
+      prenom:document.getElementById("prenom").value.trim(),
+      telephone:document.getElementById("telephone").value.trim(),
+      sexe:document.getElementById("sexe").value,
+      consentement:document.getElementById("consentement").checked
+        ? "Accepté" : ""
+    };
+
+    button.disabled = true;
+    button.textContent = "ENVOI EN COURS...";
+
+    try {
+      const response = await fetch(SCRIPT_URL,{
+        method:"POST",
+        headers:{
+          "Content-Type":"text/plain;charset=utf-8"
+        },
+        body:JSON.stringify(data)
+      });
+
+      if(!response.ok){
+        throw new Error("Erreur HTTP " + response.status);
+      }
+
+      const result = await response.json();
+
+      if(result.duplicate){
+        window.showRegistrationMessage(
+          result.message ||
+          "Ce numéro de téléphone est déjà inscrit. Vous ne pouvez pas utiliser le même numéro pour vous inscrire une deuxième fois.",
+          "duplicate"
+        );
+      } else if(result.success){
+        window.showRegistrationMessage(
+          result.message ||
+          "Votre inscription a été enregistrée avec succès.",
+          "success"
+        );
+        form.reset();
+      } else {
+        window.showRegistrationMessage(
+          result.message ||
+          "L'inscription n'a pas pu être confirmée. Veuillez réessayer.",
+          "error"
+        );
+      }
+
+    } catch(error) {
+      console.error("Erreur d'envoi :",error);
+
+      window.showRegistrationMessage(
+        "Le site n'a pas pu lire la réponse du serveur. Vérifiez la configuration de Google Apps Script avant de renvoyer le formulaire, afin d'éviter une inscription en double.",
+        "error"
+      );
+
+    } finally {
+      button.disabled = false;
+      button.textContent = "ENVOYER MON INSCRIPTION";
+    }
+  });
+})();
+</script>
+</body>
+</html>
