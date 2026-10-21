@@ -4,50 +4,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#000201">
-<meta name="description" content="Inscription officielle JOKER FOLDER 2 - MATRIX SYSTEM">
-<title>JOKER FOLDER 2 | MATRIX SYSTEM</title>
+<meta name="theme-color" content="#080000">
+<meta name="description" content="Inscription officielle JOKER FOLDER 003 MATRIX SYSTEM">
+<title>JOKER FOLDER 003 | MATRIX SYSTEM</title>
 
 <style>
 :root {
-  --bg:#000201;
-  --panel:#020503;
-  --green:#00ff41;
-  --green-dark:#008f2b;
-  --text:#d5ffe1;
-  --muted:#668472;
-  --border:rgba(0,255,65,.22);
-  --red:#ff4545;
+  --bg:#080000;
+  --panel:#100303;
+  --red:#ff1738;
+  --red-dark:#a60024;
+  --text:#fff0f2;
+  --muted:#c07883;
+  --border:rgba(255,23,56,.35);
+  --error:#ff8585;
 }
 
-* {
-  box-sizing:border-box;
-}
+* { box-sizing:border-box; }
 
 html {
   min-height:100%;
-  background:#000201;
+  background:var(--bg);
+  color-scheme:dark;
 }
 
 body {
   margin:0;
   min-height:100vh;
-  background:#000201;
+  background:var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
   overflow-x:hidden;
 }
 
-button,input,select {
-  font:inherit;
-}
+button,input,select { font:inherit; }
 
 #matrix {
   position:fixed;
   inset:0;
   width:100%;
   height:100%;
-  opacity:.25;
+  opacity:.24;
   pointer-events:none;
   z-index:0;
 }
@@ -65,7 +62,7 @@ button,input,select {
   position:fixed;
   inset:0;
   z-index:9999;
-  background:#000201;
+  background:#080000;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -81,31 +78,34 @@ button,input,select {
 }
 
 .loader-logo {
-  color:var(--green);
-  font-size:clamp(25px,7vw,38px);
+  color:var(--red);
+  font-size:clamp(25px,7vw,36px);
   font-weight:900;
-  letter-spacing:3px;
+  letter-spacing:2px;
   text-align:center;
-  text-shadow:0 0 16px rgba(0,255,65,.35);
+  line-height:1.4;
+  text-shadow:0 0 15px rgba(255,23,56,.45);
 }
 
 .loader-sub {
-  color:#557461;
-  font-size:10px;
-  letter-spacing:4px;
+  color:#d47a88;
+  font-size:11px;
+  letter-spacing:3px;
+  text-align:center;
 }
 
 .loader-bar {
   width:210px;
   height:3px;
-  background:#07130b;
+  background:#2a080e;
   overflow:hidden;
 }
 
 .loader-progress {
   height:100%;
   width:0;
-  background:var(--green);
+  background:var(--red);
+  box-shadow:0 0 12px var(--red);
   animation:progress 2.2s ease forwards;
 }
 
@@ -118,18 +118,21 @@ button,input,select {
   align-items:center;
   justify-content:center;
   gap:9px;
-  color:var(--green);
-  font-size:10px;
-  letter-spacing:2px;
+  color:#ff5b72;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:1.5px;
+  text-align:center;
   margin-bottom:27px;
 }
 
 .dot {
   width:7px;
   height:7px;
+  flex-shrink:0;
   border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 9px var(--green);
+  background:var(--red);
+  box-shadow:0 0 9px var(--red);
   animation:pulse 1.8s infinite;
 }
 
@@ -146,72 +149,77 @@ header {
   width:70px;
   height:70px;
   margin:10px auto 25px;
-  border:1px solid var(--green);
+  border:1px solid var(--red);
   display:flex;
   align-items:center;
   justify-content:center;
   transform:rotate(45deg);
-  box-shadow:0 0 20px rgba(0,255,65,.08);
+  box-shadow:0 0 22px rgba(255,23,56,.13);
+  background:rgba(30,0,5,.65);
 }
 
 .logo span {
-  color:var(--green);
+  color:var(--red);
   font-size:26px;
   font-weight:900;
   transform:rotate(-45deg);
-  text-shadow:0 0 10px rgba(0,255,65,.3);
+  text-shadow:0 0 10px rgba(255,23,56,.45);
 }
 
 h1 {
-  color:var(--green);
-  font-size:clamp(23px,6vw,34px);
-  letter-spacing:2px;
-  line-height:1.3;
+  color:var(--red);
+  font-size:clamp(24px,6.5vw,34px);
+  font-weight:900;
+  letter-spacing:1.5px;
+  line-height:1.35;
   margin:0 0 12px;
   overflow-wrap:anywhere;
+  text-shadow:0 0 15px rgba(255,23,56,.22);
 }
 
 .subtitle {
-  color:#577463;
-  font-size:11px;
+  color:#f0a2ad;
+  font-size:12px;
   line-height:2;
-  letter-spacing:1.5px;
+  letter-spacing:1.3px;
 }
 
 .separator {
-  width:75px;
-  height:1px;
-  background:var(--green-dark);
+  width:90px;
+  height:2px;
+  background:var(--red-dark);
+  box-shadow:0 0 8px rgba(255,23,56,.3);
   margin:18px auto 0;
 }
 
 .panel {
-  background:rgba(1,4,2,.97);
+  background:rgba(16,3,5,.97);
   border:1px solid var(--border);
   border-radius:9px;
   padding:23px 19px;
-  box-shadow:0 0 30px rgba(0,255,65,.025);
+  box-shadow:0 0 30px rgba(255,23,56,.055);
 }
 
 .panel-title {
-  color:var(--green);
-  font-size:13px;
-  letter-spacing:1.5px;
-  line-height:1.6;
+  color:var(--red);
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:1px;
+  line-height:1.7;
   padding-bottom:16px;
   border-bottom:1px solid var(--border);
   margin:0 0 23px;
+  overflow-wrap:anywhere;
 }
 
-.field {
-  margin-bottom:20px;
-}
+.field { margin-bottom:20px; }
 
 label.field-label {
   display:block;
-  color:#91b49b;
-  font-size:11px;
-  letter-spacing:1.2px;
+  color:#ff8b9b;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1px;
   margin-bottom:9px;
 }
 
@@ -223,11 +231,11 @@ select {
   min-width:0;
   min-height:49px;
   padding:13px 12px;
-  border:1px solid #193323;
+  border:1px solid #5b1825;
   border-radius:5px;
-  background:#010201;
-  color:#f0fff4;
-  font-size:14px;
+  background:#0b0304;
+  color:#fff0f2;
+  font-size:15px;
   outline:none;
   appearance:auto;
   -webkit-appearance:auto;
@@ -235,44 +243,41 @@ select {
 }
 
 input::placeholder {
-  color:#43594a;
+  color:#c08b93;
   opacity:1;
 }
 
-input:focus,
-select:focus {
-  border-color:var(--green);
-  box-shadow:0 0 9px rgba(0,255,65,.07);
+input:focus,select:focus {
+  border-color:var(--red);
+  box-shadow:0 0 10px rgba(255,23,56,.13);
 }
 
 select option {
-  background:#020503;
-  color:#fff;
+  background:#100303;
+  color:#fff0f2;
 }
 
 .field-error {
   display:none;
-  color:#ff7474;
-  font-size:11px;
+  color:var(--error);
+  font-size:12px;
   margin-top:7px;
   line-height:1.6;
 }
 
 .field.invalid input,
 .field.invalid select {
-  border-color:var(--red);
+  border-color:var(--error);
 }
 
-.field.invalid .field-error {
-  display:block;
-}
+.field.invalid .field-error { display:block; }
 
 .consent {
   display:flex;
   align-items:flex-start;
   gap:11px;
-  color:#829b89;
-  font-size:12px;
+  color:#e1b7bd;
+  font-size:13px;
   line-height:1.8;
   margin:22px 0;
   cursor:pointer;
@@ -283,42 +288,39 @@ select option {
   height:18px;
   min-width:18px;
   margin:2px 0 0;
-  accent-color:var(--green);
+  accent-color:var(--red);
   cursor:pointer;
 }
 
 .consent-error {
   display:none;
-  color:#ff7474;
-  font-size:11px;
+  color:var(--error);
+  font-size:12px;
   line-height:1.6;
   margin-top:-12px;
   margin-bottom:17px;
 }
 
-.consent-error.visible {
-  display:block;
-}
+.consent-error.visible { display:block; }
 
 .submit-btn {
   display:block;
   width:100%;
-  min-height:51px;
-  padding:13px 10px;
-  border:1px solid var(--green);
+  min-height:52px;
+  padding:14px 10px;
+  border:1px solid var(--red);
   border-radius:5px;
-  background:var(--green);
-  color:#001606;
-  font-size:12px;
+  background:var(--red);
+  color:#fff;
+  font-size:13px;
   font-weight:900;
-  letter-spacing:1.2px;
+  letter-spacing:1px;
   cursor:pointer;
+  box-shadow:0 0 15px rgba(255,23,56,.12);
   transition:background .2s,transform .2s;
 }
 
-.submit-btn:active {
-  transform:scale(.99);
-}
+.submit-btn:active { transform:scale(.99); }
 
 .submit-btn:disabled {
   opacity:.6;
@@ -326,19 +328,19 @@ select option {
 }
 
 .note {
-  color:#4c6655;
+  color:#d19aa3;
   text-align:center;
-  font-size:10px;
+  font-size:11px;
   line-height:2;
-  letter-spacing:.4px;
+  letter-spacing:.3px;
   margin-top:21px;
 }
 
 footer {
   text-align:center;
-  color:#304437;
-  font-size:10px;
-  letter-spacing:1px;
+  color:#b57c85;
+  font-size:11px;
+  letter-spacing:.8px;
   line-height:2;
   margin-top:29px;
 }
@@ -355,49 +357,37 @@ footer {
   background:rgba(0,0,0,.94);
 }
 
-.modal.show {
-  display:flex;
-}
+.modal.show { display:flex; }
 
 .modal-box {
   width:100%;
   max-width:365px;
   padding:26px 21px;
   text-align:center;
-  background:#020402;
-  border:1px solid var(--green);
+  background:#100303;
+  border:1px solid var(--red);
   border-radius:8px;
-  box-shadow:0 0 25px rgba(0,255,65,.07);
+  box-shadow:0 0 25px rgba(255,23,56,.12);
 }
 
-.modal-box.error {
-  border-color:var(--red);
-}
-
-.modal-box.duplicate {
-  border-color:#e4bc45;
-}
+.modal-box.error { border-color:var(--error); }
+.modal-box.duplicate { border-color:#e4bc45; }
 
 .modal-title {
-  color:var(--green);
-  font-size:16px;
+  color:var(--red);
+  font-size:17px;
   font-weight:bold;
   letter-spacing:1px;
   line-height:1.6;
   margin-bottom:14px;
 }
 
-.modal-box.error .modal-title {
-  color:#ff7777;
-}
-
-.modal-box.duplicate .modal-title {
-  color:#e4bc45;
-}
+.modal-box.error .modal-title { color:var(--error); }
+.modal-box.duplicate .modal-title { color:#e4bc45; }
 
 .modal-text {
-  color:#c1d8c8;
-  font-size:13px;
+  color:#f4dce0;
+  font-size:14px;
   line-height:1.9;
   overflow-wrap:anywhere;
 }
@@ -406,18 +396,18 @@ footer {
   width:100%;
   margin-top:22px;
   padding:13px;
-  border:1px solid var(--green);
+  border:1px solid var(--red);
   border-radius:4px;
   background:transparent;
-  color:var(--green);
-  font-size:12px;
+  color:#ff6b80;
+  font-size:13px;
   font-weight:bold;
   cursor:pointer;
 }
 
 .modal-box.error .modal-button {
-  border-color:var(--red);
-  color:#ff7777;
+  border-color:var(--error);
+  color:var(--error);
 }
 
 .modal-box.duplicate .modal-button {
@@ -426,15 +416,9 @@ footer {
 }
 
 @media(max-width:360px) {
-  .page {
-    padding:22px 12px 32px;
-  }
-  .panel {
-    padding:19px 13px;
-  }
-  h1 {
-    letter-spacing:1px;
-  }
+  .page { padding:22px 12px 32px; }
+  .panel { padding:19px 13px; }
+  h1 { letter-spacing:.7px; }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -447,31 +431,29 @@ footer {
 </head>
 
 <body>
-
 <canvas id="matrix" aria-hidden="true"></canvas>
 
 <div class="loader" id="loader">
-  <div class="loader-logo">JOKER FOLDER</div>
-  <div class="loader-sub">MATRIX SYSTEM V2</div>
+  <div class="loader-logo">JOKER FOLDER 003</div>
+  <div class="loader-sub">MATRIX SYSTEM</div>
   <div class="loader-bar">
     <div class="loader-progress"></div>
   </div>
-  <div style="color:#00ff41;font-size:11px;letter-spacing:2px">
+  <div style="color:#ff1738;font-size:12px;letter-spacing:2px">
     INITIALISATION...
   </div>
 </div>
 
 <main class="page">
-
   <div class="status">
     <span class="dot"></span>
-    MATRIX SYSTEM — ONLINE
+    JOKER FOLDER 003 — MATRIX ONLINE
   </div>
 
   <header>
     <div class="logo"><span>JF</span></div>
 
-    <h1>JOKER FOLDER 2</h1>
+    <h1>JOKER FOLDER 003 MATRIX</h1>
 
     <div class="subtitle">
       ACCÈS AU SYSTÈME MATRIX<br>
@@ -482,51 +464,27 @@ footer {
   </header>
 
   <section class="panel">
-    <h2 class="panel-title">
-      &gt; CRÉER VOTRE INSCRIPTION
-    </h2>
+    <h2 class="panel-title">&gt; CRÉER VOTRE INSCRIPTION</h2>
 
     <form id="registrationForm" novalidate>
-
       <div class="field" id="fieldNom">
         <label class="field-label" for="nom">NOM</label>
-        <input
-          id="nom"
-          name="nom"
-          type="text"
-          placeholder="Votre nom"
-          autocomplete="family-name"
-          required
-        >
+        <input id="nom" name="nom" type="text"
+          placeholder="Votre nom" autocomplete="family-name" required>
         <div class="field-error">Veuillez saisir votre nom.</div>
       </div>
 
       <div class="field" id="fieldPrenom">
         <label class="field-label" for="prenom">PRÉNOM</label>
-        <input
-          id="prenom"
-          name="prenom"
-          type="text"
-          placeholder="Votre prénom"
-          autocomplete="given-name"
-          required
-        >
+        <input id="prenom" name="prenom" type="text"
+          placeholder="Votre prénom" autocomplete="given-name" required>
         <div class="field-error">Veuillez saisir votre prénom.</div>
       </div>
 
       <div class="field" id="fieldTelephone">
-        <label class="field-label" for="telephone">
-          NUMÉRO DE TÉLÉPHONE
-        </label>
-        <input
-          id="telephone"
-          name="telephone"
-          type="tel"
-          placeholder="+509..."
-          autocomplete="tel"
-          inputmode="tel"
-          required
-        >
+        <label class="field-label" for="telephone">NUMÉRO DE TÉLÉPHONE</label>
+        <input id="telephone" name="telephone" type="tel"
+          placeholder="+509..." autocomplete="tel" inputmode="tel" required>
         <div class="field-error">
           Veuillez saisir un numéro de téléphone valide.
         </div>
@@ -541,21 +499,15 @@ footer {
           <option value="Autre">Autre</option>
           <option value="Non précisé">Je préfère ne pas préciser</option>
         </select>
-        <div class="field-error">
-          Veuillez sélectionner une option.
-        </div>
+        <div class="field-error">Veuillez sélectionner une option.</div>
       </div>
 
       <label class="consent" for="consentement">
-        <input
-          id="consentement"
-          name="consentement"
-          type="checkbox"
-          required
-        >
+        <input id="consentement" name="consentement"
+          type="checkbox" required>
         <span>
           J'accepte que mes informations soient enregistrées
-          pour traiter mon inscription à JOKER FOLDER 2.
+          pour traiter mon inscription à JOKER FOLDER 003.
         </span>
       </label>
 
@@ -566,7 +518,6 @@ footer {
       <button type="submit" id="submitBtn" class="submit-btn">
         ENVOYER MON INSCRIPTION
       </button>
-
     </form>
   </section>
 
@@ -576,118 +527,103 @@ footer {
     Vos informations sont utilisées pour votre inscription.
   </div>
 
-  <footer>
-    © 2026 JOKER FOLDER 2 | MATRIX SYSTEM
-  </footer>
-
+  <footer>© 2026 JOKER FOLDER 003 | MATRIX SYSTEM</footer>
 </main>
 
-<div
-  class="modal"
-  id="messageModal"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="modalTitle"
->
+<div class="modal" id="messageModal" role="dialog"
+  aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box" id="modalBox">
     <div class="modal-title" id="modalTitle">INFORMATION</div>
     <div class="modal-text" id="modalText"></div>
-    <button class="modal-button" id="modalClose" type="button">
-      FERMER
-    </button>
+    <button class="modal-button" id="modalClose" type="button">FERMER</button>
   </div>
 </div>
 
 <script>
 "use strict";
 
-/* INITIALISATION */
+/* LOADER */
 (function(){
   const loader = document.getElementById("loader");
-
   window.setTimeout(function(){
     if(loader) loader.classList.add("hidden");
-  },2600);
+  },2300);
 })();
 
-/* ANIMATION MATRIX : FOND NOIR PROFOND */
+/* MATRIX ROUGE */
 (function(){
   const canvas = document.getElementById("matrix");
   const ctx = canvas.getContext("2d");
-
   if(!ctx) return;
 
   const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const size = 14;
   let drops = [];
-  let frame = 0;
   let animationId = null;
+  let running = false;
 
   function resize(){
     const ratio = Math.min(window.devicePixelRatio || 1,2);
-
     canvas.width = Math.floor(window.innerWidth * ratio);
     canvas.height = Math.floor(window.innerHeight * ratio);
     canvas.style.width = window.innerWidth + "px";
     canvas.style.height = window.innerHeight + "px";
-
     ctx.setTransform(ratio,0,0,ratio,0,0);
-
-    drops = Array(
-      Math.ceil(window.innerWidth / size)
-    ).fill(1);
+    drops = Array(Math.ceil(window.innerWidth / size)).fill(1);
+    ctx.fillStyle = "#080000";
+    ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
   }
 
   function draw(){
-    frame++;
+    if(document.hidden){
+      running = false;
+      return;
+    }
 
-    if(frame % 2 === 0){
-      ctx.fillStyle = "rgba(0,2,1,0.30)";
-      ctx.fillRect(
-        0,0,window.innerWidth,window.innerHeight
+    running = true;
+    ctx.fillStyle = "rgba(8,0,0,0.30)";
+    ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+    ctx.font = size + "px monospace";
+
+    for(let i=0;i<drops.length;i++){
+      ctx.fillStyle = Math.random() > .92 ? "#ff8798" : "#ff1738";
+      ctx.fillText(
+        chars[Math.floor(Math.random()*chars.length)],
+        i*size,
+        drops[i]*size
       );
 
-      ctx.fillStyle = "#00d936";
-      ctx.font = size + "px monospace";
-
-      for(let i=0;i<drops.length;i++){
-        if(Math.random() > 0.45){
-          ctx.fillText(
-            chars[Math.floor(Math.random()*chars.length)],
-            i*size,
-            drops[i]*size
-          );
-        }
-
-        if(
-          drops[i]*size > window.innerHeight &&
-          Math.random() > 0.985
-        ){
-          drops[i] = 0;
-        }
-
-        drops[i]++;
+      if(drops[i]*size > window.innerHeight && Math.random() > .975){
+        drops[i] = 0;
       }
+      drops[i]++;
     }
 
     animationId = requestAnimationFrame(draw);
+  }
+
+  function start(){
+    if(running) return;
+    running = true;
+    draw();
   }
 
   window.addEventListener("resize",resize);
 
   document.addEventListener("visibilitychange",function(){
     if(document.hidden){
+      running = false;
       if(animationId) cancelAnimationFrame(animationId);
     } else {
-      draw();
+      start();
     }
   });
 
   resize();
-  draw();
+  start();
 })();
 
-/* FENÊTRE DE MESSAGE */
+/* MODAL */
 (function(){
   const modal = document.getElementById("messageModal");
   const box = document.getElementById("modalBox");
@@ -756,43 +692,31 @@ footer {
   function validateForm(){
     let firstInvalid = null;
 
-    const nom = nomInput.value.trim();
-    const prenom = prenomInput.value.trim();
-    const telephone = telephoneInput.value.trim();
-    const sexe = sexeInput.value;
-
     const checks = [
-      [nomInput,!nom],
-      [prenomInput,!prenom],
-      [telephoneInput,!telephone],
-      [sexeInput,!sexe]
+      [nomInput,!nomInput.value.trim()],
+      [prenomInput,!prenomInput.value.trim()],
+      [telephoneInput,!telephoneInput.value.trim()],
+      [sexeInput,!sexeInput.value]
     ];
 
     checks.forEach(function(item){
       setFieldError(item[0],item[1]);
-
-      if(item[1] && !firstInvalid){
-        firstInvalid = item[0];
-      }
+      if(item[1] && !firstInvalid) firstInvalid = item[0];
     });
 
-    const digits = telephone.replace(/\D/g,"");
-    const phoneInvalid = digits.length < 7;
+    const digits = telephoneInput.value.replace(/\D/g,"");
 
-    if(telephone && phoneInvalid){
+    if(telephoneInput.value.trim() && digits.length < 7){
       setFieldError(telephoneInput,true);
-      const error = document.querySelector(
-        "#fieldTelephone .field-error"
-      );
-      error.textContent =
+      document.querySelector("#fieldTelephone .field-error").textContent =
         "Veuillez vérifier le numéro de téléphone.";
       if(!firstInvalid) firstInvalid = telephoneInput;
+    } else {
+      document.querySelector("#fieldTelephone .field-error").textContent =
+        "Veuillez saisir un numéro de téléphone valide.";
     }
 
-    consentError.classList.toggle(
-      "visible",
-      !consentInput.checked
-    );
+    consentError.classList.toggle("visible",!consentInput.checked);
 
     if(!consentInput.checked && !firstInvalid){
       firstInvalid = consentInput;
@@ -808,9 +732,7 @@ footer {
 
   [nomInput,prenomInput,telephoneInput].forEach(function(input){
     input.addEventListener("input",function(){
-      if(input.value.trim()){
-        setFieldError(input,false);
-      }
+      if(input.value.trim()) setFieldError(input,false);
     });
   });
 
@@ -819,10 +741,7 @@ footer {
   });
 
   consentInput.addEventListener("change",function(){
-    consentError.classList.toggle(
-      "visible",
-      !consentInput.checked
-    );
+    consentError.classList.toggle("visible",!consentInput.checked);
   });
 
   form.addEventListener("submit",async function(event){
@@ -859,16 +778,14 @@ footer {
         redirect:"follow"
       });
 
-      if(!response.ok){
-        throw new Error("HTTP_" + response.status);
-      }
+      if(!response.ok) throw new Error("HTTP_" + response.status);
 
       const raw = await response.text();
       let result;
 
       try {
         result = JSON.parse(raw);
-      } catch(parseError) {
+      } catch(error) {
         throw new Error("REPONSE_NON_JSON");
       }
 
@@ -880,10 +797,7 @@ footer {
         return;
       }
 
-      if(
-        result.success === true &&
-        result.code === "INSCRIPTION_REUSSIE"
-      ){
+      if(result.success === true && result.code === "INSCRIPTION_REUSSIE"){
         window.showRegistrationMessage(
           "Votre inscription a été enregistrée avec succès.",
           "success"
@@ -899,8 +813,7 @@ footer {
       }
 
       window.showRegistrationMessage(
-        result.message ||
-        "Le serveur n'a pas confirmé l'inscription. Vérifiez vos informations.",
+        result.message || "Le serveur n'a pas confirmé l'inscription.",
         "error"
       );
 
@@ -920,6 +833,5 @@ footer {
   });
 })();
 </script>
-
 </body>
 </html>
