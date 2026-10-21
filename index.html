@@ -1,186 +1,468 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#000201">
-<title>JOKER FOLDER 2 | MATRIX</title>
+<meta name="description" content="Inscription officielle JOKER FOLDER 2 - MATRIX SYSTEM">
+<title>JOKER FOLDER 2 | MATRIX SYSTEM</title>
 
 <style>
 :root {
   --bg:#000201;
   --panel:#020503;
   --green:#00ff41;
+  --green-dark:#008f2b;
   --text:#d5ffe1;
   --muted:#668472;
-  --border:rgba(0,255,65,.25);
+  --border:rgba(0,255,65,.22);
+  --red:#ff4545;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;min-height:100vh;background:#000201;
-  color:var(--text);font-family:Arial,sans-serif
+
+* {
+  box-sizing:border-box;
 }
-#matrix{
-  position:fixed;inset:0;width:100%;height:100%;
-  opacity:.28;pointer-events:none;z-index:0;
-  filter:brightness(1.15) contrast(1.3)
+
+html {
+  min-height:100%;
+  background:#000201;
 }
-.loader{
-  position:fixed;inset:0;z-index:9999;background:#000201;
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:17px;
-  animation:autoHide 3.5s forwards
+
+body {
+  margin:0;
+  min-height:100vh;
+  background:#000201;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
-.loader-logo{
-  font-size:clamp(25px,7vw,38px);font-weight:900;
-  color:var(--green);letter-spacing:3px;text-align:center;
-  text-shadow:0 0 15px rgba(0,255,65,.4)
+
+button,input,select {
+  font:inherit;
 }
-.loader-sub{color:var(--muted);font-size:10px;letter-spacing:4px}
-.loader-bar{width:210px;height:3px;background:#07130b;overflow:hidden}
-.loader-progress{
-  height:100%;width:0;background:var(--green);
-  animation:progress 2.5s forwards
+
+#matrix {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:.25;
+  pointer-events:none;
+  z-index:0;
 }
-@keyframes progress{to{width:100%}}
-@keyframes autoHide{
-  0%,75%{opacity:1;visibility:visible}
-  100%{opacity:0;visibility:hidden;pointer-events:none}
+
+.page {
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:540px;
+  margin:0 auto;
+  padding:25px 16px 40px;
 }
-.loader.hidden{display:none}
-.page{
-  position:relative;z-index:1;width:100%;max-width:540px;
-  margin:auto;padding:25px 16px 40px
+
+.loader {
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#000201;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:17px;
+  transition:opacity .5s ease;
 }
-.status{
-  display:flex;align-items:center;justify-content:center;
-  gap:9px;color:var(--green);font-size:10px;
-  letter-spacing:2px;margin-bottom:25px
+
+.loader.hidden {
+  opacity:0;
+  pointer-events:none;
+  visibility:hidden;
 }
-.dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--green);box-shadow:0 0 8px var(--green)
+
+.loader-logo {
+  color:var(--green);
+  font-size:clamp(25px,7vw,38px);
+  font-weight:900;
+  letter-spacing:3px;
+  text-align:center;
+  text-shadow:0 0 16px rgba(0,255,65,.35);
 }
-header{text-align:center;margin-bottom:30px}
-.logo{
-  width:70px;height:70px;margin:8px auto 23px;
-  border:1px solid var(--green);display:flex;
-  align-items:center;justify-content:center;transform:rotate(45deg);
-  box-shadow:0 0 18px rgba(0,255,65,.07)
+
+.loader-sub {
+  color:#557461;
+  font-size:10px;
+  letter-spacing:4px;
 }
-.logo span{
-  color:var(--green);font-size:25px;font-weight:900;
-  transform:rotate(-45deg)
+
+.loader-bar {
+  width:210px;
+  height:3px;
+  background:#07130b;
+  overflow:hidden;
 }
-h1{
-  font-size:clamp(23px,6vw,34px);letter-spacing:2px;
-  color:var(--green);margin:0 0 12px;overflow-wrap:anywhere;
-  text-shadow:0 0 10px rgba(0,255,65,.12)
+
+.loader-progress {
+  height:100%;
+  width:0;
+  background:var(--green);
+  animation:progress 2.2s ease forwards;
 }
-.subtitle{
-  color:#577463;font-size:11px;line-height:1.9;
-  letter-spacing:1.5px
+
+@keyframes progress {
+  to { width:100%; }
 }
-.panel{
-  background:rgba(1,4,2,.98);border:1px solid var(--border);
-  border-radius:10px;padding:22px 18px;
-  box-shadow:0 0 25px rgba(0,255,65,.025)
+
+.status {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  color:var(--green);
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:27px;
 }
-.panel-title{
-  color:var(--green);font-size:13px;letter-spacing:2px;
-  padding-bottom:15px;border-bottom:1px solid var(--border);
-  margin:0 0 22px
+
+.dot {
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 9px var(--green);
+  animation:pulse 1.8s infinite;
 }
-.field{margin-bottom:18px}
-label{
-  display:block;color:#8cb49a;font-size:11px;
-  letter-spacing:1px;margin-bottom:8px
+
+@keyframes pulse {
+  50% { opacity:.4; }
 }
-input,select{
-  width:100%;min-height:47px;padding:12px;
-  border:1px solid #14251a;border-radius:5px;
-  background:#010201;color:white;font-size:14px;outline:none
+
+header {
+  text-align:center;
+  margin-bottom:30px;
 }
-input:focus,select:focus{
+
+.logo {
+  width:70px;
+  height:70px;
+  margin:10px auto 25px;
+  border:1px solid var(--green);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform:rotate(45deg);
+  box-shadow:0 0 20px rgba(0,255,65,.08);
+}
+
+.logo span {
+  color:var(--green);
+  font-size:26px;
+  font-weight:900;
+  transform:rotate(-45deg);
+  text-shadow:0 0 10px rgba(0,255,65,.3);
+}
+
+h1 {
+  color:var(--green);
+  font-size:clamp(23px,6vw,34px);
+  letter-spacing:2px;
+  line-height:1.3;
+  margin:0 0 12px;
+  overflow-wrap:anywhere;
+}
+
+.subtitle {
+  color:#577463;
+  font-size:11px;
+  line-height:2;
+  letter-spacing:1.5px;
+}
+
+.separator {
+  width:75px;
+  height:1px;
+  background:var(--green-dark);
+  margin:18px auto 0;
+}
+
+.panel {
+  background:rgba(1,4,2,.97);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:23px 19px;
+  box-shadow:0 0 30px rgba(0,255,65,.025);
+}
+
+.panel-title {
+  color:var(--green);
+  font-size:13px;
+  letter-spacing:1.5px;
+  line-height:1.6;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--border);
+  margin:0 0 23px;
+}
+
+.field {
+  margin-bottom:20px;
+}
+
+label.field-label {
+  display:block;
+  color:#91b49b;
+  font-size:11px;
+  letter-spacing:1.2px;
+  margin-bottom:9px;
+}
+
+input[type="text"],
+input[type="tel"],
+select {
+  display:block;
+  width:100%;
+  min-width:0;
+  min-height:49px;
+  padding:13px 12px;
+  border:1px solid #193323;
+  border-radius:5px;
+  background:#010201;
+  color:#f0fff4;
+  font-size:14px;
+  outline:none;
+  appearance:auto;
+  -webkit-appearance:auto;
+  transition:border-color .2s,box-shadow .2s;
+}
+
+input::placeholder {
+  color:#43594a;
+  opacity:1;
+}
+
+input:focus,
+select:focus {
   border-color:var(--green);
-  box-shadow:0 0 8px rgba(0,255,65,.08)
+  box-shadow:0 0 9px rgba(0,255,65,.07);
 }
-select option{background:#020503}
-.consent{
-  display:flex;align-items:flex-start;gap:10px;
-  color:#668472;font-size:12px;line-height:1.7;
-  margin:20px 0
+
+select option {
+  background:#020503;
+  color:#fff;
 }
-.consent input{
-  width:17px;min-height:17px;margin-top:2px;
-  accent-color:var(--green);flex-shrink:0
+
+.field-error {
+  display:none;
+  color:#ff7474;
+  font-size:11px;
+  margin-top:7px;
+  line-height:1.6;
 }
-.submit-btn{
-  width:100%;min-height:49px;padding:12px;
-  border:1px solid var(--green);border-radius:5px;
-  background:var(--green);color:#001606;font-size:12px;
-  font-weight:900;letter-spacing:1.5px;cursor:pointer
+
+.field.invalid input,
+.field.invalid select {
+  border-color:var(--red);
 }
-.submit-btn:disabled{opacity:.5;cursor:wait}
-.note{
-  color:#405647;text-align:center;font-size:10px;
-  line-height:1.9;margin-top:20px
+
+.field.invalid .field-error {
+  display:block;
 }
-footer{
-  text-align:center;color:#304437;font-size:10px;
-  letter-spacing:1px;margin-top:28px
+
+.consent {
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  color:#829b89;
+  font-size:12px;
+  line-height:1.8;
+  margin:22px 0;
+  cursor:pointer;
 }
-.modal{
-  position:fixed;inset:0;z-index:10000;
-  display:none;align-items:center;justify-content:center;
-  padding:22px;background:rgba(0,0,0,.94)
+
+.consent input {
+  width:18px;
+  height:18px;
+  min-width:18px;
+  margin:2px 0 0;
+  accent-color:var(--green);
+  cursor:pointer;
 }
-.modal.show{display:flex}
-.modal-box{
-  width:100%;max-width:360px;padding:25px 20px;
-  text-align:center;background:#020402;
-  border:1px solid var(--green);border-radius:8px;
-  box-shadow:0 0 25px rgba(0,255,65,.08)
+
+.consent-error {
+  display:none;
+  color:#ff7474;
+  font-size:11px;
+  line-height:1.6;
+  margin-top:-12px;
+  margin-bottom:17px;
 }
-.modal-box.error{border-color:#ff4545}
-.modal-title{
-  color:var(--green);font-size:16px;font-weight:bold;
-  letter-spacing:1px;margin-bottom:15px
+
+.consent-error.visible {
+  display:block;
 }
-.modal-box.error .modal-title{color:#ff6666}
-.modal-text{
-  color:#c1d8c8;font-size:13px;line-height:1.8;
-  overflow-wrap:anywhere
+
+.submit-btn {
+  display:block;
+  width:100%;
+  min-height:51px;
+  padding:13px 10px;
+  border:1px solid var(--green);
+  border-radius:5px;
+  background:var(--green);
+  color:#001606;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  cursor:pointer;
+  transition:background .2s,transform .2s;
 }
-.modal-button{
-  width:100%;margin-top:20px;padding:12px;
-  border:1px solid var(--green);border-radius:4px;
-  background:transparent;color:var(--green);
-  font-weight:bold;cursor:pointer
+
+.submit-btn:active {
+  transform:scale(.99);
 }
-.modal-box.error .modal-button{
-  border-color:#ff4545;color:#ff7777
+
+.submit-btn:disabled {
+  opacity:.6;
+  cursor:wait;
 }
-@media(max-width:360px){
-  .panel{padding:17px 13px}
-  h1{letter-spacing:1px}
+
+.note {
+  color:#4c6655;
+  text-align:center;
+  font-size:10px;
+  line-height:2;
+  letter-spacing:.4px;
+  margin-top:21px;
+}
+
+footer {
+  text-align:center;
+  color:#304437;
+  font-size:10px;
+  letter-spacing:1px;
+  line-height:2;
+  margin-top:29px;
+}
+
+/* FENET MESAJ */
+.modal {
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.94);
+}
+
+.modal.show {
+  display:flex;
+}
+
+.modal-box {
+  width:100%;
+  max-width:365px;
+  padding:26px 21px;
+  text-align:center;
+  background:#020402;
+  border:1px solid var(--green);
+  border-radius:8px;
+  box-shadow:0 0 25px rgba(0,255,65,.07);
+}
+
+.modal-box.error {
+  border-color:var(--red);
+}
+
+.modal-box.duplicate {
+  border-color:#e4bc45;
+}
+
+.modal-title {
+  color:var(--green);
+  font-size:16px;
+  font-weight:bold;
+  letter-spacing:1px;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+
+.modal-box.error .modal-title {
+  color:#ff7777;
+}
+
+.modal-box.duplicate .modal-title {
+  color:#e4bc45;
+}
+
+.modal-text {
+  color:#c1d8c8;
+  font-size:13px;
+  line-height:1.9;
+  overflow-wrap:anywhere;
+}
+
+.modal-button {
+  width:100%;
+  margin-top:22px;
+  padding:13px;
+  border:1px solid var(--green);
+  border-radius:4px;
+  background:transparent;
+  color:var(--green);
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.modal-box.error .modal-button {
+  border-color:var(--red);
+  color:#ff7777;
+}
+
+.modal-box.duplicate .modal-button {
+  border-color:#e4bc45;
+  color:#e4bc45;
+}
+
+@media(max-width:360px) {
+  .page {
+    padding:22px 12px 32px;
+  }
+  .panel {
+    padding:19px 13px;
+  }
+  h1 {
+    letter-spacing:1px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
-<canvas id="matrix"></canvas>
+
+<canvas id="matrix" aria-hidden="true"></canvas>
 
 <div class="loader" id="loader">
   <div class="loader-logo">JOKER FOLDER</div>
   <div class="loader-sub">MATRIX SYSTEM V2</div>
-  <div class="loader-bar"><div class="loader-progress"></div></div>
+  <div class="loader-bar">
+    <div class="loader-progress"></div>
+  </div>
   <div style="color:#00ff41;font-size:11px;letter-spacing:2px">
     INITIALISATION...
   </div>
 </div>
 
 <main class="page">
+
   <div class="status">
     <span class="dot"></span>
     MATRIX SYSTEM — ONLINE
@@ -188,37 +470,70 @@ footer{
 
   <header>
     <div class="logo"><span>JF</span></div>
+
     <h1>JOKER FOLDER 2</h1>
+
     <div class="subtitle">
       ACCÈS AU SYSTÈME MATRIX<br>
       FORMULAIRE D'INSCRIPTION
     </div>
+
+    <div class="separator"></div>
   </header>
 
   <section class="panel">
-    <h2 class="panel-title">▸ CRÉER VOTRE INSCRIPTION</h2>
+    <h2 class="panel-title">
+      &gt; CRÉER VOTRE INSCRIPTION
+    </h2>
 
-    <form id="registrationForm">
-      <div class="field">
-        <label for="nom">NOM</label>
-        <input id="nom" name="nom" type="text"
-          placeholder="Votre nom" autocomplete="family-name" required>
+    <form id="registrationForm" novalidate>
+
+      <div class="field" id="fieldNom">
+        <label class="field-label" for="nom">NOM</label>
+        <input
+          id="nom"
+          name="nom"
+          type="text"
+          placeholder="Votre nom"
+          autocomplete="family-name"
+          required
+        >
+        <div class="field-error">Veuillez saisir votre nom.</div>
       </div>
 
-      <div class="field">
-        <label for="prenom">PRÉNOM</label>
-        <input id="prenom" name="prenom" type="text"
-          placeholder="Votre prénom" autocomplete="given-name" required>
+      <div class="field" id="fieldPrenom">
+        <label class="field-label" for="prenom">PRÉNOM</label>
+        <input
+          id="prenom"
+          name="prenom"
+          type="text"
+          placeholder="Votre prénom"
+          autocomplete="given-name"
+          required
+        >
+        <div class="field-error">Veuillez saisir votre prénom.</div>
       </div>
 
-      <div class="field">
-        <label for="telephone">NUMÉRO DE TÉLÉPHONE</label>
-        <input id="telephone" name="telephone" type="tel"
-          placeholder="+509..." autocomplete="tel" required>
+      <div class="field" id="fieldTelephone">
+        <label class="field-label" for="telephone">
+          NUMÉRO DE TÉLÉPHONE
+        </label>
+        <input
+          id="telephone"
+          name="telephone"
+          type="tel"
+          placeholder="+509..."
+          autocomplete="tel"
+          inputmode="tel"
+          required
+        >
+        <div class="field-error">
+          Veuillez saisir un numéro de téléphone valide.
+        </div>
       </div>
 
-      <div class="field">
-        <label for="sexe">SEXE</label>
+      <div class="field" id="fieldSexe">
+        <label class="field-label" for="sexe">SEXE</label>
         <select id="sexe" name="sexe" required>
           <option value="">Sélectionnez une option</option>
           <option value="Masculin">Masculin</option>
@@ -226,32 +541,54 @@ footer{
           <option value="Autre">Autre</option>
           <option value="Non précisé">Je préfère ne pas préciser</option>
         </select>
+        <div class="field-error">
+          Veuillez sélectionner une option.
+        </div>
       </div>
 
-      <label class="consent">
-        <input id="consentement" type="checkbox" required>
+      <label class="consent" for="consentement">
+        <input
+          id="consentement"
+          name="consentement"
+          type="checkbox"
+          required
+        >
         <span>
           J'accepte que mes informations soient enregistrées
           pour traiter mon inscription à JOKER FOLDER 2.
         </span>
       </label>
 
+      <div class="consent-error" id="consentError">
+        Veuillez cocher la case de consentement avant de continuer.
+      </div>
+
       <button type="submit" id="submitBtn" class="submit-btn">
         ENVOYER MON INSCRIPTION
       </button>
+
     </form>
   </section>
 
   <div class="note">
     MATRIX SYSTEM : ACTIF<br>
-    Vérifiez vos informations avant l'envoi.
+    Vérifiez vos informations avant l'envoi.<br>
+    Vos informations sont utilisées pour votre inscription.
   </div>
 
-  <footer>© 2026 JOKER FOLDER 2 | MATRIX</footer>
+  <footer>
+    © 2026 JOKER FOLDER 2 | MATRIX SYSTEM
+  </footer>
+
 </main>
 
-<div class="modal" id="messageModal" role="dialog"
-  aria-modal="true" aria-labelledby="modalTitle">
+<div
+  class="modal"
+  id="messageModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalTitle"
+>
   <div class="modal-box" id="modalBox">
     <div class="modal-title" id="modalTitle">INFORMATION</div>
     <div class="modal-text" id="modalText"></div>
@@ -262,27 +599,43 @@ footer{
 </div>
 
 <script>
-/* CHARGEMENT */
+"use strict";
+
+/* INITIALISATION */
 (function(){
   const loader = document.getElementById("loader");
-  setTimeout(function(){
+
+  window.setTimeout(function(){
     if(loader) loader.classList.add("hidden");
-  },2800);
+  },2600);
 })();
 
-/* ANIMATION MATRIX : NOIR PROFOND, VERT INTENSE */
+/* ANIMATION MATRIX : FOND NOIR PROFOND */
 (function(){
   const canvas = document.getElementById("matrix");
   const ctx = canvas.getContext("2d");
+
+  if(!ctx) return;
+
   const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const size = 14;
   let drops = [];
   let frame = 0;
+  let animationId = null;
 
   function resize(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    drops = Array(Math.ceil(canvas.width / size)).fill(1);
+    const ratio = Math.min(window.devicePixelRatio || 1,2);
+
+    canvas.width = Math.floor(window.innerWidth * ratio);
+    canvas.height = Math.floor(window.innerHeight * ratio);
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+
+    drops = Array(
+      Math.ceil(window.innerWidth / size)
+    ).fill(1);
   }
 
   function draw(){
@@ -290,29 +643,46 @@ footer{
 
     if(frame % 2 === 0){
       ctx.fillStyle = "rgba(0,2,1,0.30)";
-      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillRect(
+        0,0,window.innerWidth,window.innerHeight
+      );
 
-      ctx.fillStyle = "#00ff41";
+      ctx.fillStyle = "#00d936";
       ctx.font = size + "px monospace";
 
       for(let i=0;i<drops.length;i++){
         if(Math.random() > 0.45){
           ctx.fillText(
             chars[Math.floor(Math.random()*chars.length)],
-            i*size,drops[i]*size
+            i*size,
+            drops[i]*size
           );
         }
 
-        if(drops[i]*size > canvas.height && Math.random() > 0.985){
+        if(
+          drops[i]*size > window.innerHeight &&
+          Math.random() > 0.985
+        ){
           drops[i] = 0;
         }
+
         drops[i]++;
       }
     }
-    requestAnimationFrame(draw);
+
+    animationId = requestAnimationFrame(draw);
   }
 
   window.addEventListener("resize",resize);
+
+  document.addEventListener("visibilitychange",function(){
+    if(document.hidden){
+      if(animationId) cancelAnimationFrame(animationId);
+    } else {
+      draw();
+    }
+  });
+
   resize();
   draw();
 })();
@@ -322,56 +692,160 @@ footer{
   const modal = document.getElementById("messageModal");
   const box = document.getElementById("modalBox");
   const title = document.getElementById("modalTitle");
-  const text = document.getElementById("modalText");
+  const messageText = document.getElementById("modalText");
   const close = document.getElementById("modalClose");
 
   window.showRegistrationMessage = function(message,type){
-    box.className = "modal-box" +
-      (type === "error" ? " error" : "");
+    box.className = "modal-box";
 
     if(type === "success"){
       title.textContent = "INSCRIPTION RÉUSSIE";
     } else if(type === "duplicate"){
       title.textContent = "NUMÉRO DÉJÀ INSCRIT";
+      box.classList.add("duplicate");
     } else {
       title.textContent = "INFORMATION";
+      box.classList.add("error");
     }
 
-    text.textContent = message;
+    messageText.textContent = message;
     modal.classList.add("show");
+    close.focus();
   };
 
-  close.addEventListener("click",function(){
+  function closeModal(){
     modal.classList.remove("show");
-  });
+  }
+
+  close.addEventListener("click",closeModal);
 
   modal.addEventListener("click",function(event){
-    if(event.target === modal){
-      modal.classList.remove("show");
-    }
+    if(event.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown",function(event){
+    if(event.key === "Escape") closeModal();
   });
 })();
 
-/* INSCRIPTION GOOGLE APPS SCRIPT */
+/* VALIDATION ET INSCRIPTION */
 (function(){
   const form = document.getElementById("registrationForm");
   const button = document.getElementById("submitBtn");
 
+  const nomInput = document.getElementById("nom");
+  const prenomInput = document.getElementById("prenom");
+  const telephoneInput = document.getElementById("telephone");
+  const sexeInput = document.getElementById("sexe");
+  const consentInput = document.getElementById("consentement");
+  const consentError = document.getElementById("consentError");
+
   const SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbyjYxrGsKqOcPq9mV0Oo7w3qB1HkH-owNb03pOv9h2qibko0QPVBC5ti3eX7-ULYSte6Q/exec";
+
+  let sending = false;
+
+  function setFieldError(input,invalid){
+    const field = input.closest(".field");
+    if(!field) return;
+
+    field.classList.toggle("invalid",invalid);
+    input.setAttribute("aria-invalid",invalid ? "true" : "false");
+  }
+
+  function validateForm(){
+    let firstInvalid = null;
+
+    const nom = nomInput.value.trim();
+    const prenom = prenomInput.value.trim();
+    const telephone = telephoneInput.value.trim();
+    const sexe = sexeInput.value;
+
+    const checks = [
+      [nomInput,!nom],
+      [prenomInput,!prenom],
+      [telephoneInput,!telephone],
+      [sexeInput,!sexe]
+    ];
+
+    checks.forEach(function(item){
+      setFieldError(item[0],item[1]);
+
+      if(item[1] && !firstInvalid){
+        firstInvalid = item[0];
+      }
+    });
+
+    const digits = telephone.replace(/\D/g,"");
+    const phoneInvalid = digits.length < 7;
+
+    if(telephone && phoneInvalid){
+      setFieldError(telephoneInput,true);
+      const error = document.querySelector(
+        "#fieldTelephone .field-error"
+      );
+      error.textContent =
+        "Veuillez vérifier le numéro de téléphone.";
+      if(!firstInvalid) firstInvalid = telephoneInput;
+    }
+
+    consentError.classList.toggle(
+      "visible",
+      !consentInput.checked
+    );
+
+    if(!consentInput.checked && !firstInvalid){
+      firstInvalid = consentInput;
+    }
+
+    if(firstInvalid){
+      firstInvalid.focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  [nomInput,prenomInput,telephoneInput].forEach(function(input){
+    input.addEventListener("input",function(){
+      if(input.value.trim()){
+        setFieldError(input,false);
+      }
+    });
+  });
+
+  sexeInput.addEventListener("change",function(){
+    if(sexeInput.value) setFieldError(sexeInput,false);
+  });
+
+  consentInput.addEventListener("change",function(){
+    consentError.classList.toggle(
+      "visible",
+      !consentInput.checked
+    );
+  });
 
   form.addEventListener("submit",async function(event){
     event.preventDefault();
 
-    if(!form.reportValidity() || button.disabled) return;
+    if(sending) return;
+
+    if(!validateForm()){
+      window.showRegistrationMessage(
+        "Veuillez vérifier les champs signalés et cocher la case de consentement.",
+        "error"
+      );
+      return;
+    }
 
     const data = {
-      nom:document.getElementById("nom").value.trim(),
-      prenom:document.getElementById("prenom").value.trim(),
-      telephone:document.getElementById("telephone").value.trim(),
-      sexe:document.getElementById("sexe").value
+      nom:nomInput.value.trim(),
+      prenom:prenomInput.value.trim(),
+      telephone:telephoneInput.value.trim(),
+      sexe:sexeInput.value
     };
 
+    sending = true;
     button.disabled = true;
     button.textContent = "ENVOI EN COURS...";
 
@@ -394,31 +868,39 @@ footer{
 
       try {
         result = JSON.parse(raw);
-      } catch(error) {
+      } catch(parseError) {
         throw new Error("REPONSE_NON_JSON");
       }
 
       if(result.code === "NUMERO_DEJA_INSCRIT"){
         window.showRegistrationMessage(
-          "Ce numéro est déjà inscrit. Une deuxième inscription avec le même numéro est refusée.",
+          "Ce numéro de téléphone est déjà inscrit. Une deuxième inscription avec le même numéro est refusée.",
           "duplicate"
         );
         return;
       }
 
-      if(result.success === true &&
-         result.code === "INSCRIPTION_REUSSIE"){
+      if(
+        result.success === true &&
+        result.code === "INSCRIPTION_REUSSIE"
+      ){
         window.showRegistrationMessage(
           "Votre inscription a été enregistrée avec succès.",
           "success"
         );
         form.reset();
+
+        document.querySelectorAll(".field").forEach(function(field){
+          field.classList.remove("invalid");
+        });
+
+        consentError.classList.remove("visible");
         return;
       }
 
       window.showRegistrationMessage(
         result.message ||
-        "Le serveur n'a pas confirmé l'inscription.",
+        "Le serveur n'a pas confirmé l'inscription. Vérifiez vos informations.",
         "error"
       );
 
@@ -426,16 +908,18 @@ footer{
       console.error("Erreur d'inscription :",error);
 
       window.showRegistrationMessage(
-        "La réponse du serveur n'a pas pu être vérifiée. Ne renvoyez pas le formulaire immédiatement. Vérifiez d'abord Google Sheets pour éviter une inscription en double.",
+        "La réponse du serveur n'a pas pu être vérifiée. Votre inscription a peut-être été enregistrée. Vérifiez Google Sheets avant de réessayer.",
         "error"
       );
 
     } finally {
+      sending = false;
       button.disabled = false;
       button.textContent = "ENVOYER MON INSCRIPTION";
     }
   });
 })();
 </script>
+
 </body>
 </html>
